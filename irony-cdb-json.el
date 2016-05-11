@@ -116,13 +116,13 @@ even helm by enabling `helm-mode' before calling the function."
 (defun irony-cdb-json-select-most-recent ()
   "Select CDB that is most recently modified."
   (interactive)
-    (setq irony-cdb-json--project-alist
-          (sort irony-cdb-json--project-alist
-                (lambda (x y)
-                  (time-less-p (irony-cdb-json--last-mod (cdr y))
-                               (irony-cdb-json--last-mod (cdr x))))))
-    (irony-cdb-json--save-project-alist)
-    (irony-cdb-autosetup-compile-options))
+  (setq irony-cdb-json--project-alist
+        (sort irony-cdb-json--project-alist
+              (lambda (x y)
+                (time-less-p (irony-cdb-json--last-mod (cdr y))
+                             (irony-cdb-json--last-mod (cdr x))))))
+  (irony-cdb-json--save-project-alist)
+  (irony-cdb-autosetup-compile-options))
 
 (defun irony-cdb-json--get-compile-options ()
   (irony--awhen (irony-cdb-json--locate-db)
